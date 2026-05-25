@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AkeeTek | Join Our Team</title>
+  <link rel="icon" type="image/png" href="Images/Logo-May2-2026.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="CSS/stylesheet.css">
+
+  <!-- ══════════════════════════════════════════════════
+       EMAIL SETUP — EmailJS (same account as Contact.html)
+       ─────────────────────────────────────────────────
+       Create a SECOND template in EmailJS for job applications.
+       Template variables used:
+         {{applicant_name}}, {{applicant_email}}, {{phone}},
+         {{role}}, {{cover_note}}, {{resume_name}}, {{resume_data}}
+       For resume attachment: in your EmailJS template add an
+       attachment field mapped to {{resume_data}} (base64).
+       Replace the 3 placeholders below:
+          YOUR_PUBLIC_KEY      → same public key as Contact.html
+          YOUR_SERVICE_ID      → same service ID
+          YOUR_JOB_TEMPLATE_ID → new template for job applications
+  ═══════════════════════════════════════════════════ -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init({ publicKey: "YOUR_PUBLIC_KEY" });
+    })();
+  </script>
+
+  <style>
+    :root {
+      --bg: #000; --bg-2: #0a0a0a; --bg-3: #111;
+      --surface: #151517; --border: #1f1f22;
+      --muted: #9ca3af; --text: #f5f5f7; --text-dim: #cfcfd3;
+      --accent: #ac6bff; --accent-2: #7c3aed;
+      --shadow: 0 10px 40px rgba(172,107,255,0.12);
+      --t: 0.35s cubic-bezier(0.2,0.7,0.2,1);
+      --radius: 14px; --container: 1240px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: "Montserrat", sans-serif; line-height: 1.6; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--accent); color: #000; }
+
+    .eyebrow { display: inline-block; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 16px; }
+
+    /* ── Hero ── */
+    .page-hero {
+      padding: 140px 5% 60px;
+      background:
+        radial-gradient(900px 500px at 80% 0%, rgba(172,107,255,0.13), transparent 60%),
+        radial-gradient(600px 400px at 10% 100%, rgba(124,58,237,0.08), transparent 60%),
+        var(--bg);
+      border-bottom: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: ""; position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.015) 39px, rgba(255,255,255,0.015) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.015) 39px, rgba(255,255,255,0.015) 40px);
+      pointer-events: none;
+    }
+
+    .accent-bar { width: 52px; height: 3px; background: var(--accent); border-radius: 2px; margin-bottom: 20px; }
+
+    .hero-inner { max-width: var(--container); margin: 0 auto; position: relative; }
+
+    .page-hero h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 18px; }
+    .page-hero > .hero-inner > p { font-size: clamp(14px, 1.5vw, 17px); color: var(--text-dim); max-width: 580px; line-height: 1.8; margin-bottom: 30px; }
+
+    /* Perks strip */
+    .perks-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .perk-pill {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(172,107,255,0.08);
+      border: 1px solid rgba(172,107,255,0.2);
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 12px; color: var(--text-dim); font-weight: 500;
+    }
+    .perk-pill i { color: var(--accent); font-size: 13px; }
+
+    /* Filters */
+    .filter-section {
+      background: var(--bg-2);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 5%;
+      position: sticky;
+      top: 72px;
+      z-index: 100;
+    }
+
+    .filter-inner { max-width: var(--container); margin: 0 auto; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .filter-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; margin-right: 4px; white-space: nowrap; }
+
+    .filter-chip {
+      padding: 7px 16px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--muted);
+      cursor: pointer;
+      background: var(--bg-3);
+      transition: all var(--t);
+      font-family: "Montserrat", sans-serif;
+      font-weight: 500;
+    }
+
+    .filter-chip:hover { border-color: var(--accent); color: var(--text); }
+    .filter-chip.active { background: rgba(172,107,255,0.15); border-color: rgba(172,107,255,0.5); color: var(--accent); }
+
+    /* Jobs Section */
+    .jobs-section { padding: 50px 5%; background: var(--bg-2); min-height: 500px; }
+    .jobs-inner { max-width: var(--container); margin: 0 auto; }
+
+    .jobs-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-bottom: 16px; border-bottom: 1px solid var(--border); margin-bottom: 8px;
+    }
+
+    .jobs-count { font-size: 13px; color: var(--muted); }
+    .jobs-count span { color: var(--accent); font-weight: 700; }
+
+    /* Job Item */
+    .job-item {
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: background var(--t);
+      border-radius: 0;
+    }
+
+    .job-item:last-child { border-bottom: none; }
+
+    .job-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      cursor: pointer;
+      gap: 16px;
+      user-select: none;
+    }
+
+    .job-left { display: flex; gap: 14px; align-items: flex-start; flex: 1; min-width: 0; }
+
+    .job-icon-box {
+      width: 42px; height: 42px;
+      background: rgba(172,107,255,0.1);
+      border: 1px solid rgba(172,107,255,0.25);
+      border-radius: 10px;
+      display: grid; place-items: center;
+      flex-shrink: 0;
+      font-size: 16px; color: var(--accent);
+      transition: all var(--t);
+    }
+
+    .job-item.open .job-icon-box { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    .job-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 6px; letter-spacing: -0.01em; }
+    .job-meta { display: flex; gap: 7px; flex-wrap: wrap; }
+
+    .job-tag { font-size: 11px; padding: 3px 10px; border-radius: 999px; font-weight: 500; }
+    .tag-dept { background: rgba(172,107,255,0.12); color: var(--accent); border: 1px solid rgba(172,107,255,0.25); }
+    .tag-type { background: var(--bg-3); color: var(--muted); border: 1px solid var(--border); }
+    .tag-loc  { background: var(--bg-3); color: var(--muted); border: 1px solid var(--border); }
+
+    .job-chevron { color: #444; font-size: 14px; flex-shrink: 0; transition: transform var(--t), color var(--t); }
+    .job-item.open .job-chevron { transform: rotate(180deg); color: var(--accent); }
+
+    /* Answer / expanded */
+    .job-answer { display: none; padding: 0 0 24px 56px; }
+    .job-item.open .job-answer { display: block; }
+
+    .job-desc { font-size: 13px; color: var(--text-dim); line-height: 1.8; margin-bottom: 14px; }
+
+    .job-skills { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 20px; }
+    .skill-chip { background: var(--bg); border: 1px solid var(--border); border-radius: 7px; font-size: 11px; color: var(--text-dim); padding: 4px 10px; font-weight: 500; }
+
+    /* Apply button in listing — opens modal */
+    .apply-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 22px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-family: "Montserrat", sans-serif;
+      transition: all var(--t);
+      box-shadow: 0 6px 20px rgba(172,107,255,0.3);
+    }
+
+    .apply-trigger:hover { background: var(--accent-2); transform: translateY(-2px); }
+
+    /* No results */
+    .no-results { padding: 60px; text-align: center; color: var(--muted); font-size: 14px; display: none; }
+    .no-results i { font-size: 36px; color: var(--border); margin-bottom: 14px; display: block; }
+
+    /* ── APPLY MODAL ── */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(6px);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-backdrop.open { display: flex; }
+
+    .modal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      width: 100%;
+      max-width: 540px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      animation: modalIn 0.3s cubic-bezier(0.2,0.7,0.2,1);
+    }
+
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(20px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 16px;
+      width: 32px; height: 32px;
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: grid; place-items: center;
+      cursor: pointer;
+      font-size: 14px; color: var(--muted);
+      transition: all var(--t);
+    }
+
+    .modal-close:hover { background: #333; color: #fff; }
+
+    .modal-role-label { font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; margin-bottom: 6px; }
+    .modal-title { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+    .modal-subtitle { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+    .modal-divider { height: 1px; background: var(--border); margin-bottom: 24px; }
+
+    /* Modal form fields — reuse contact.html style */
+    .mfrow { margin-bottom: 16px; }
+    .mfrow-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+
+    .mfrow label, .mfrow-2 label {
+      display: block; font-size: 11px; color: var(--muted);
+      margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500;
+    }
+
+    .mfrow input, .mfrow textarea, .mfrow-2 input {
+      width: 100%;
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-size: 13px;
+      color: var(--text);
+      font-family: "Montserrat", sans-serif;
+      outline: none;
+      transition: border-color var(--t), box-shadow var(--t);
+    }
+
+    .mfrow input:focus, .mfrow textarea:focus, .mfrow-2 input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(172,107,255,0.12);
+    }
+
+    .mfrow textarea { resize: vertical; min-height: 90px; }
+
+    /* File upload zone */
+    .file-zone {
+      border: 2px dashed var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--t);
+      position: relative;
+    }
+
+    .file-zone:hover, .file-zone.drag-over {
+      border-color: var(--accent);
+      background: rgba(172,107,255,0.05);
+    }
+
+    .file-zone input[type="file"] {
+      position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+    }
+
+    .file-zone-icon { font-size: 28px; color: var(--accent); margin-bottom: 8px; }
+    .file-zone-text { font-size: 13px; color: var(--text-dim); margin-bottom: 4px; font-weight: 500; }
+    .file-zone-hint { font-size: 11px; color: var(--muted); }
+
+    .file-selected {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      background: rgba(172,107,255,0.08);
+      border: 1px solid rgba(172,107,255,0.25);
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    .file-selected.show { display: flex; }
+    .file-selected i { color: var(--accent); }
+
+    .file-remove {
+      margin-left: auto;
+      cursor: pointer;
+      color: var(--muted);
+      font-size: 13px;
+      transition: color var(--t);
+      background: none; border: none;
+    }
+
+    .file-remove:hover { color: #e24b4a; }
+
+    .req { color: var(--accent); }
+
+    .modal-submit {
+      width: 100%;
+      background: var(--accent);
+      border: none;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      font-family: "Montserrat", sans-serif;
+      transition: all var(--t);
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      box-shadow: 0 8px 24px rgba(172,107,255,0.3);
+      margin-top: 8px;
+    }
+
+    .modal-submit:hover { background: var(--accent-2); }
+    .modal-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .modal-toast {
+      display: none;
+      align-items: center;
+      gap: 12px;
+      background: #0d1a0d;
+      border: 1px solid #2a5c2a;
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-top: 14px;
+      font-size: 13px;
+      color: #7cd97c;
+    }
+
+    .modal-toast.error { background: #1a0d0d; border-color: #5c2a2a; color: #e07c7c; }
+    .modal-toast.show { display: flex; }
+
+    /* ── Culture Section ── */
+    .culture-section {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 70px 5%;
+    }
+
+    .culture-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+
+    .culture-inner .section-title {
+      font-size: clamp(24px, 3vw, 38px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .culture-inner .section-title::after {
+      content: ""; display: block; width: 52px; height: 3px;
+      margin: 14px auto 0;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      border-radius: 2px;
+    }
+
+    .culture-sub { text-align: center; color: var(--text-dim); font-size: 14px; margin-bottom: 48px; }
+
+    .culture-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .culture-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 22px;
+      transition: all var(--t);
+    }
+
+    .culture-card:hover { border-color: rgba(172,107,255,0.4); transform: translateY(-6px); box-shadow: var(--shadow); }
+
+    .culture-icon {
+      width: 48px; height: 48px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border-radius: 12px;
+      display: grid; place-items: center;
+      font-size: 18px; color: #fff;
+      margin-bottom: 16px;
+      box-shadow: 0 8px 20px rgba(172,107,255,0.3);
+    }
+
+    .culture-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+    .culture-card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+    /* Footer (reuse) */
+    .footer { background: #050507; padding: 80px 5% 0; border-top: 1px solid var(--border); }
+    .footer-container { max-width: var(--container); margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
+    .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .footer-logo h2 { font-size: 20px; font-weight: 700; }
+    .logo-mark { width: 38px; height: 38px; display: grid; place-items: center; overflow: hidden; }
+    .logo-mark img { width: 100%; height: 100%; object-fit: cover; }
+    .footer-about p { color: var(--text-dim); line-height: 1.7; max-width: 300px; font-size: 14px; }
+    .social-icons { display: flex; gap: 10px; margin-top: 20px; }
+    .social-icons a { width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid var(--accent); border-radius: 10px; transition: all var(--t); font-size: 14px; }
+    .social-icons a:hover { background: var(--accent); color: #fff; transform: translateY(-3px); }
+    .footer-links h3 { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; position: relative; padding-bottom: 10px; }
+    .footer-links h3::after { content: ""; position: absolute; bottom: 0; left: 0; width: 36px; height: 2px; background: var(--accent); }
+    .footer-links ul li { margin: 10px 0; color: var(--text-dim); font-size: 14px; }
+    .footer-links ul li a { color: var(--text-dim); transition: all var(--t); }
+    .footer-links ul li a:hover { color: var(--accent); padding-left: 4px; }
+    .footer-bottom { margin-top: 60px; padding: 20px; text-align: center; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; }
+    .footer-bottom span { color: var(--accent); font-weight: 600; }
+
+    /* Responsive */
+    @media (max-width: 900px) { .culture-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 640px) {
+      .culture-grid { grid-template-columns: 1fr; }
+      .modal { padding: 24px 18px; }
+      .mfrow-2 { grid-template-columns: 1fr; }
+      .footer-container { grid-template-columns: 1fr; gap: 32px; }
+      .job-answer { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">
+          <img src="Images/Logo-May2-2026.png" alt="AkeeTek"
+            onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fa-solid fa-cube\'></i>'">
+        </span>
+        <h1 class="logo-text">AkeeTek</h1>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="index.html#services">What we do <i class="fa-solid fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="index.html?expand=0#services">AI Automation</a></li>
+            <li><a href="index.html?expand=1#services">ERP &amp; CRM Solutions</a></li>
+            <li><a href="index.html?expand=2#services">Technology Transformation</a></li>
+            <li><a href="index.html?expand=3#services">Digital &amp; CX Solutions</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="index.html#recognition-box" class="active">Who we are <i class="fa-solid fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="leadership.html">Leadership Team</a></li>
+            <li><a href="joinUs.html">Join Our Team</a></li>
+          </ul>
+        </li>
+        <li><a href="Blog.html">Blog</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+      </ul>
+      <button class="menu-icon" id="menuToggle" onclick="toggleMenu()" aria-label="Toggle menu">
+        <span class="hamburger"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="hero-inner">
+      <div class="accent-bar"></div>
+      <p class="eyebrow">Careers at AkeeTek</p>
+      <h1>Join Our Team</h1>
+      <p>We're a team of builders, thinkers and problem-solvers working on real challenges for global enterprises. Come work with smart people across New Zealand, India and Sri Lanka.</p>
+      <div class="perks-row">
+        <div class="perk-pill"><i class="fa-solid fa-earth-asia"></i> Remote-friendly roles</div>
+        <div class="perk-pill"><i class="fa-solid fa-graduation-cap"></i> Learning &amp; development</div>
+        <div class="perk-pill"><i class="fa-solid fa-rocket"></i> Fast-growing company</div>
+        <div class="perk-pill"><i class="fa-solid fa-users"></i> Diverse global team</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters -->
+  <div class="filter-section">
+    <div class="filter-inner">
+      <span class="filter-label">Filter by</span>
+      <button class="filter-chip active" data-filter="all">All Openings</button>
+      <button class="filter-chip" data-filter="AI &amp; Engineering">AI &amp; Engineering</button>
+      <button class="filter-chip" data-filter="Delivery &amp; CX">Delivery &amp; CX</button>
+      <button class="filter-chip" data-filter="Sales">Sales</button>
+      <button class="filter-chip" data-filter="Auckland">Auckland</button>
+      <button class="filter-chip" data-filter="India">India</button>
+      <button class="filter-chip" data-filter="Remote">Remote</button>
+    </div>
+  </div>
+
+  <!-- Jobs -->
+  <section class="jobs-section">
+    <div class="jobs-inner">
+      <div class="jobs-header">
+        <span class="jobs-count"><span id="jobCountNum">6</span> open positions</span>
+      </div>
+
+      <div id="jobsList">
+
+        <div class="job-item" data-dept="AI &amp; Engineering" data-loc="Auckland">
+          <div class="job-q" onclick="toggleJob(this)">
+            <div class="job-left">
+              <div class="job-icon-box"><i class="fa-solid fa-brain"></i></div>
+              <div>
+                <div class="job-title">Senior AI / ML Engineer</div>
+                <div class="job-meta">
+                  <span class="job-tag tag-dept">AI &amp; Engineering</span>
+                  <span class="job-tag tag-type">Full-time</span>
+                  <span class="job-tag tag-loc"><i class="fa-solid fa-location-dot" style="font-size:9px;margin-right:3px"></i>Auckland / Remote</span>
+                </div>
+              </div>
+            </div>
+            <i class="fa-solid fa-chevron-down job-chevron"></i>
+          </div>
+          <div class="job-answer">
+            <p class="job-desc">Design and deploy production-grade ML models for enterprise automation clients. You'll work end-to-end — from data ingestion pipelines to model serving — on some of the most complex industrial AI challenges in APAC. Collaborate with cross-functional delivery teams to ship real business value.</p>
+            <div class="job-skills">
+              <span class="skill-chip">Python</span><span class="skill-chip">PyTorch / TensorFlow</span><span class="skill-chip">MLOps</span><span class="skill-chip">AWS / Azure</span><span class="skill-chip">5+ yrs exp</span>
+            </div>
+            <button class="apply-trigger" onclick="openModal('Senior AI / ML Engineer', 'Auckland / Remote', 'AI &amp; Engineering')">
+              Apply Now <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="job-item" data-dept="Delivery &amp; CX" data-loc="India">
+          <div class="job-q" onclick="toggleJob(this)">
+            <div class="job-left">
+              <div class="job-icon-box"><i class="fa-solid fa-gears"></i></div>
+              <div>
+                <div class="job-title">ERP Solutions Consultant</div>
+                <div class="job-meta">
+                  <span class="job-tag tag-dept">Delivery &amp; CX</span>
+                  <span class="job-tag tag-type">Full-time</span>
+                  <span class="job-tag tag-loc"><i class="fa-solid fa-location-dot" style="font-size:9px;margin-right:3px"></i>India — Hyderabad</span>
+                </div>
+              </div>
+            </div>
+            <i class="fa-solid fa-chevron-down job-chevron"></i>
+          </div>
+          <div class="job-answer">
+            <p class="job-desc">Lead end-to-end ERP implementations (SAP / Oracle / MS Dynamics) for global clients. You'll be the client-facing expert on delivery pods, running requirements workshops, system configuration, UAT and go-live support.</p>
+            <div class="job-skills">
+              <span class="skill-chip">SAP / Oracle</span><span class="skill-chip">MS Dynamics</span><span class="skill-chip">Business Analysis</span><span class="skill-chip">3+ yrs ERP</span>
+            </div>
+            <button class="apply-trigger" onclick="openModal('ERP Solutions Consultant', 'India — Hyderabad', 'Delivery &amp; CX')">
+              Apply Now <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="job-item" data-dept="Delivery &amp; CX" data-loc="Auckland">
+          <div class="job-q" onclick="toggleJob(this)">
+            <div class="job-left">
+              <div class="job-icon-box"><i class="fa-solid fa-chart-line"></i></div>
+              <div>
+                <div class="job-title">CX &amp; Digital Strategy Lead</div>
+                <div class="job-meta">
+                  <span class="job-tag tag-dept">Delivery &amp; CX</span>
+                  <span class="job-tag tag-type">Full-time</span>
+                  <span class="job-tag tag-loc"><i class="fa-solid fa-location-dot" style="font-size:9px;margin-right:3px"></i>Auckland</span>
+                </div>
+              </div>
+            </div>
+            <i class="fa-solid fa-chevron-down job-chevron"></i>
+          </div>
+          <div class="job-answer">
+            <p class="job-desc">Drive digital transformation and CX strategies for enterprise clients. Run discovery workshops, map customer journeys, and partner with tech teams to deliver measurable NPS and conversion improvements. Strong strategy and consulting mindset required.</p>
+            <div class="job-skills">
+              <span class="skill-chip">Journey Mapping</span><span class="skill-chip">NPS / CSAT</span><span class="skill-chip">Salesforce CRM</span><span class="skill-chip">Agile</span>
+            </div>
+            <button class="apply-trigger" onclick="openModal('CX &amp; Digital Strategy Lead', 'Auckland', 'Delivery &amp; CX')">
+              Apply Now <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="job-item" data-dept="AI &amp; Engineering" data-loc="Remote">
+          <div class="job-q" onclick="toggleJob(this)">
+            <div class="job-left">
+              <div class="job-icon-box"><i class="fa-solid fa-code"></i></div>
+              <div>
+                <div class="job-title">Full Stack Developer</div>
+                <div class="job-meta">
+                  <span class="job-tag tag-dept">AI &amp; Engineering</span>
+                  <span class="job-tag tag-type">Full-time</span>
+                  <span class="job-tag tag-loc"><i class="fa-solid fa-location-dot" style="font-size:9px;margin-right:3px"></i>India / Remote</span>
+                </div>
+              </div>
+            </div>
+            <i class="fa-solid fa-chevron-down job-chevron"></i>
+          </div>
+          <div class="job-answer">
+            <p class="job-desc">Build scalable web platforms and APIs powering enterprise digital products. You'll work across the full stack — React frontends, Node or Python backends — shipping clean, tested, production code for high-traffic applications.</p>
+            <div class="job-skills">
+              <span class="skill-chip">React</span><span class="skill-chip">Node.js / Python</span><span class="skill-chip">PostgreSQL</span><span class="skill-chip">Docker / K8s</span>
+            </div>
+            <button class="apply-trigger" onclick="openModal('Full Stack Developer', 'India / Remote', 'AI &amp; Engineering')">
+              Apply Now <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="job-item" data-dept="Sales" data-loc="Auckland">
+          <div class="job-q" onclick="toggleJob(this)">
+            <div class="job-left">
+              <div class="job-icon-box"><i class="fa-solid fa-briefcase"></i></div>
+              <div>
+                <div class="job-title">Enterprise Sales Manager</div>
+                <div class="job-meta">
+                  <span class="job-tag tag-dept">Sales</span>
+                  <span class="job-tag tag-type">Full-time</span>
+                  <span class="job-tag tag-loc"><i class="fa-solid fa-location-dot" style="font-size:9px;margin-right:3px"></i>Auckland / APAC</span>
+                </div>
+              </div>
+            </div>
+            <i class="fa-solid fa-chevron-down job-chevron"></i>
+          </div>
+          <div class="job-answer">
+            <p class="job-desc">Own and grow enterprise accounts across APAC. Prospect, qualify, and close complex technology transformation deals. Work closely with delivery leads to craft compelling proposals and ensure seamless client handover.</p>
+            <div class="job-skills">
+              <span class="skill-chip">Enterprise Sales</span><span class="skill-chip">Salesforce CRM</span><span class="skill-chip">APAC Market</span><span class="skill-chip">5+ yrs SaaS/Tech</span>
+            </div>
+            <button class="apply-trigger" onclick="openModal('Enterprise Sales Manager', 'Auckland / APAC', 'Sales')">
+              Apply Now <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="job-item" data-dept="Delivery &amp; CX" data-loc="India">
+          <div class="job-q" onclick="toggleJob(this)">
+            <div class="job-left">
+              <div class="job-icon-box"><i class="fa-solid fa-users"></i></div>
+              <div>
+                <div class="job-title">Project Delivery Manager</div>
+                <div class="job-meta">
+                  <span class="job-tag tag-dept">Delivery &amp; CX</span>
+                  <span class="job-tag tag-type">Full-time</span>
+                  <span class="job-tag tag-loc"><i class="fa-solid fa-location-dot" style="font-size:9px;margin-right:3px"></i>Sri Lanka</span>
+                </div>
+              </div>
+            </div>
+            <i class="fa-solid fa-chevron-down job-chevron"></i>
+          </div>
+          <div class="job-answer">
+            <p class="job-desc">Lead cross-functional delivery teams across multiple client projects. Own timelines, risks, budgets and stakeholder communications for technology transformation engagements. Be the glue between engineering excellence and client success.</p>
+            <div class="job-skills">
+              <span class="skill-chip">PMP / Agile</span><span class="skill-chip">Jira</span><span class="skill-chip">Stakeholder Mgmt</span><span class="skill-chip">4+ yrs delivery</span>
+            </div>
+            <button class="apply-trigger" onclick="openModal('Project Delivery Manager', 'Sri Lanka', 'Delivery &amp; CX')">
+              Apply Now <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="no-results" id="noResults">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        No openings match this filter right now. Check back soon or send us your CV at <strong style="color:var(--accent)">info@akeetek.com</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- Culture -->
+  <section class="culture-section">
+    <div class="culture-inner">
+      <h2 class="section-title">Why AkeeTek</h2>
+      <p class="culture-sub">We're building something special — and we want you to be part of it.</p>
+      <div class="culture-grid">
+        <div class="culture-card">
+          <div class="culture-icon"><i class="fa-solid fa-earth-oceania"></i></div>
+          <h3>Global Impact</h3>
+          <p>Work on projects that transform industries across New Zealand, India, Sri Lanka and beyond.</p>
+        </div>
+        <div class="culture-card">
+          <div class="culture-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <h3>Continuous Learning</h3>
+          <p>Access to certifications, conferences, and internal knowledge sessions to keep you sharp.</p>
+        </div>
+        <div class="culture-card">
+          <div class="culture-icon"><i class="fa-solid fa-rocket"></i></div>
+          <h3>Career Growth</h3>
+          <p>A fast-moving environment with real ownership and a clear path to leadership roles.</p>
+        </div>
+        <div class="culture-card">
+          <div class="culture-icon"><i class="fa-solid fa-heart"></i></div>
+          <h3>People First</h3>
+          <p>Flexible work, competitive compensation, and a team that genuinely looks out for each other.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo">
+          <span class="logo-mark">
+            <img src="Images/Logo-May2-2026.png" alt="AkeeTek"
+              onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fa-solid fa-cube\'></i>'">
+          </span>
+          <h2>AkeeTek</h2>
+        </div>
+        <p>AkeeTek is where the best minds deliver mission-critical software solutions for global enterprises and SMEs.</p>
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/company/akeetek/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="index.html#services">AI Automation &amp; Consulting</a></li>
+          <li><a href="index.html#services">ERP &amp; CRM Solutions</a></li>
+          <li><a href="index.html#services">Technology Transformation</a></li>
+          <li><a href="index.html#services">Digital &amp; CX Solutions</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="index.html#services">What we do</a></li>
+          <li><a href="Leadership.html">Leadership Team</a></li>
+          <li><a href="JoinUs.html">Join our Team</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h3>Contact</h3>
+        <ul>
+          <li><i class="fa-solid fa-envelope" style="color:var(--accent);margin-right:8px"></i> info@akeetek.com</li>
+          <li><i class="fa-solid fa-location-dot" style="color:var(--accent);margin-right:8px"></i> Auckland, 1010, New Zealand</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 <span>AkeeTek</span>. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ── Apply Modal ── -->
+  <div class="modal-backdrop" id="applyModal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" onclick="closeModal()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-role-label" id="modalDept">AI &amp; Engineering</div>
+      <h2 class="modal-title" id="modalTitle">Senior AI / ML Engineer</h2>
+      <p class="modal-subtitle" id="modalLoc"><i class="fa-solid fa-location-dot" style="color:var(--accent);margin-right:5px"></i>Auckland / Remote</p>
+      <div class="modal-divider"></div>
+
+      <form id="applyForm" novalidate>
+        <input type="hidden" id="af_role" name="role">
+
+        <div class="mfrow-2">
+          <div>
+            <label for="af_fname">First Name <span class="req">*</span></label>
+            <input type="text" id="af_fname" name="first_name" placeholder="John" required>
+          </div>
+          <div>
+            <label for="af_lname">Last Name <span class="req">*</span></label>
+            <input type="text" id="af_lname" name="last_name" placeholder="Smith" required>
+          </div>
+        </div>
+
+        <div class="mfrow">
+          <label for="af_email">Email Address <span class="req">*</span></label>
+          <input type="email" id="af_email" name="applicant_email" placeholder="john@email.com" required>
+        </div>
+
+        <div class="mfrow">
+          <label for="af_phone">Phone Number</label>
+          <input type="tel" id="af_phone" name="phone" placeholder="+64 21 000 0000">
+        </div>
+
+        <div class="mfrow">
+          <label for="af_linkedin">LinkedIn Profile URL</label>
+          <input type="text" id="af_linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourname">
+        </div>
+
+        <div class="mfrow">
+          <label>Resume / CV <span class="req">*</span></label>
+          <div class="file-zone" id="fileZone">
+            <input type="file" id="af_resume" accept=".pdf,.doc,.docx" onchange="handleFile(this)">
+            <div class="file-zone-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+            <div class="file-zone-text">Drop your resume here or click to browse</div>
+            <div class="file-zone-hint">PDF, DOC, DOCX — max 5MB</div>
+          </div>
+          <div class="file-selected" id="fileSelected">
+            <i class="fa-solid fa-file-pdf"></i>
+            <span id="fileName">resume.pdf</span>
+            <button type="button" class="file-remove" onclick="removeFile()" aria-label="Remove file"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+        </div>
+
+        <div class="mfrow">
+          <label for="af_cover">Cover Note <span class="req">*</span></label>
+          <textarea id="af_cover" name="cover_note" placeholder="Tell us why you're a great fit for this role and what excites you about AkeeTek…" required></textarea>
+        </div>
+
+        <button type="submit" class="modal-submit" id="applySubmitBtn">
+          Submit Application <i class="fa-solid fa-paper-plane"></i>
+        </button>
+
+        <div class="modal-toast" id="applySuccess">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>Application sent! We'll review your CV and be in touch soon.</span>
+        </div>
+
+        <div class="modal-toast error" id="applyError">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          <span>Something went wrong. Please email your CV directly to <strong>info@akeetek.com</strong></span>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="Javascript/script.js"></script>
+  <script>
+    /* ── Job accordion ── */
+    function toggleJob(el) {
+      const item = el.closest(".job-item");
+      const isOpen = item.classList.contains("open");
+      document.querySelectorAll(".job-item.open").forEach(i => i.classList.remove("open"));
+      if (!isOpen) item.classList.add("open");
+    }
+
+    /* ── Filters ── */
+    document.querySelectorAll(".filter-chip").forEach(chip => {
+      chip.addEventListener("click", function() {
+        document.querySelectorAll(".filter-chip").forEach(c => c.classList.remove("active"));
+        this.classList.add("active");
+        const filter = this.dataset.filter;
+        const items = document.querySelectorAll(".job-item");
+        let visible = 0;
+        items.forEach(item => {
+          const dept = item.dataset.dept || "";
+          const loc  = item.dataset.loc  || "";
+          const show = filter === "all" || dept.includes(filter) || loc.includes(filter);
+          item.style.display = show ? "" : "none";
+          if (show) visible++;
+        });
+        document.getElementById("jobCountNum").textContent = visible;
+        document.getElementById("noResults").style.display = visible === 0 ? "block" : "none";
+        // close open ones when filtering
+        document.querySelectorAll(".job-item.open").forEach(i => i.classList.remove("open"));
+      });
+    });
+
+    /* ── Modal ── */
+    function openModal(role, loc, dept) {
+      document.getElementById("modalTitle").textContent = role;
+      document.getElementById("modalLoc").innerHTML = '<i class="fa-solid fa-location-dot" style="color:var(--accent);margin-right:5px"></i>' + loc;
+      document.getElementById("modalDept").textContent = dept;
+      document.getElementById("af_role").value = role;
+      document.getElementById("applyForm").reset();
+      document.getElementById("fileSelected").classList.remove("show");
+      document.getElementById("applySuccess").classList.remove("show");
+      document.getElementById("applyError").classList.remove("show");
+      window._resumeData = null;
+      window._resumeName = null;
+      document.getElementById("applyModal").classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+      document.getElementById("applyModal").classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    document.getElementById("applyModal").addEventListener("click", function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    /* ── File handling ── */
+    function handleFile(input) {
+      const file = input.files[0];
+      if (!file) return;
+      if (file.size > 5 * 1024 * 1024) {
+        alert("File is too large. Please upload a file under 5MB.");
+        input.value = "";
+        return;
+      }
+      document.getElementById("fileName").textContent = file.name;
+      document.getElementById("fileSelected").classList.add("show");
+      window._resumeName = file.name;
+
+      // Read as base64 for EmailJS attachment
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        window._resumeData = e.target.result; // base64 data URL
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function removeFile() {
+      document.getElementById("af_resume").value = "";
+      document.getElementById("fileSelected").classList.remove("show");
+      window._resumeData = null;
+      window._resumeName = null;
+    }
+
+    // Drag-and-drop
+    const zone = document.getElementById("fileZone");
+    zone.addEventListener("dragover", e => { e.preventDefault(); zone.classList.add("drag-over"); });
+    zone.addEventListener("dragleave", () => zone.classList.remove("drag-over"));
+    zone.addEventListener("drop", e => {
+      e.preventDefault();
+      zone.classList.remove("drag-over");
+      const dt = e.dataTransfer;
+      if (dt.files.length) {
+        document.getElementById("af_resume").files = dt.files;
+        handleFile(document.getElementById("af_resume"));
+      }
+    });
+
+    /* ── Submit application ── */
+    document.getElementById("applyForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const btn = document.getElementById("applySubmitBtn");
+      const successEl = document.getElementById("applySuccess");
+      const errorEl   = document.getElementById("applyError");
+
+      successEl.classList.remove("show");
+      errorEl.classList.remove("show");
+
+      // Validate required
+      const required = ["af_fname", "af_lname", "af_email", "af_cover"];
+      for (const id of required) {
+        const el = document.getElementById(id);
+        if (!el.value.trim()) {
+          el.focus();
+          el.style.borderColor = "#e24b4a";
+          setTimeout(() => el.style.borderColor = "", 2000);
+          return;
+        }
+      }
+
+      if (!window._resumeData) {
+        document.getElementById("fileZone").style.borderColor = "#e24b4a";
+        setTimeout(() => document.getElementById("fileZone").style.borderColor = "", 2000);
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = 'Submitting… <i class="fa-solid fa-spinner fa-spin"></i>';
+
+      const params = {
+        applicant_name: document.getElementById("af_fname").value.trim() + " " + document.getElementById("af_lname").value.trim(),
+        applicant_email: document.getElementById("af_email").value.trim(),
+        reply_to:        document.getElementById("af_email").value.trim(),
+        phone:           document.getElementById("af_phone").value.trim() || "Not provided",
+        linkedin:        document.getElementById("af_linkedin").value.trim() || "Not provided",
+        role:            document.getElementById("af_role").value,
+        cover_note:      document.getElementById("af_cover").value.trim(),
+        resume_name:     window._resumeName,
+        resume_data:     window._resumeData  // base64 — map to attachment in EmailJS template
+      };
+
+      // ── Replace YOUR_SERVICE_ID and YOUR_JOB_TEMPLATE_ID below ──
+      emailjs.send("YOUR_SERVICE_ID", "YOUR_JOB_TEMPLATE_ID", params)
+        .then(function() {
+          successEl.classList.add("show");
+          document.getElementById("applyForm").reset();
+          document.getElementById("fileSelected").classList.remove("show");
+          window._resumeData = null;
+          btn.disabled = false;
+          btn.innerHTML = 'Submit Application <i class="fa-solid fa-paper-plane"></i>';
+        }, function(err) {
+          console.error("EmailJS error:", err);
+          errorEl.classList.add("show");
+          btn.disabled = false;
+          btn.innerHTML = 'Submit Application <i class="fa-solid fa-paper-plane"></i>';
+        });
+    });
+  </script>
+</body>
+</html>
